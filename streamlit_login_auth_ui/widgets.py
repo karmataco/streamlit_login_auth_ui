@@ -18,6 +18,7 @@ from .utils import generate_random_passwd
 from .utils import send_passwd_in_email
 from .utils import change_passwd
 from .utils import check_email_and_password
+from .utils import send_welcome_email
 from .utils import check_valid_username, check_valid_password
 from .utils import get_users_data
 import deta
@@ -32,7 +33,7 @@ class __login__:
     """
 
     def __init__(
-        self, auth_token: str, company_name: str, width, height,
+        self, auth_token: str, courier_welcome_template: str, company_name: str, width, height,
         logout_button_name: str = 'Logout', hide_menu_bool: bool = False,
         hide_footer_bool: bool = False,
         lottie_url: str = "https://assets8.lottiefiles.com/packages/lf20_ktwnwv5m.json",
@@ -62,6 +63,7 @@ class __login__:
         15. cookie_prefix : Cookie prefix
         """
         self.auth_token = auth_token
+        self.courier_welcome_template = courier_welcome_template
         self.company_name = company_name
         self.width = width
         self.height = height
@@ -288,6 +290,7 @@ class __login__:
 
                 if is_registration_ok:
                     register_new_user(name_sign_up, email_sign_up, username_sign_up, password_sign_up, self.users_auth_file, self.detadb)                    
+                    send_welcome_email(name_sign_up, email_sign_up, self.auth_token, self.courier_welcome_template)
                     st.success("Registration Successful!")
 
 

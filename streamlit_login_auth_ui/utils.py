@@ -341,6 +341,25 @@ def generate_random_passwd() -> str:
     return secrets.token_urlsafe(password_length)
 
 
+def send_welcome_email(name, email, auth_token, template):
+    """
+    Sends a Welcome email after registration
+    """
+    client = Courier(auth_token=auth_token)
+
+    resp = client.send_message(
+    message={
+        "to": {
+        "email": email,
+        },
+        "template": template,
+        "data": {
+        "Name": name,
+        },
+    }
+    )
+    print(resp['requestId'])
+
 def send_passwd_in_email(
         auth_token: str,
         username_forgot_passwd: str,
