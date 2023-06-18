@@ -291,7 +291,7 @@ class __login__:
                 if is_registration_ok:
                     register_new_user(name_sign_up, email_sign_up, username_sign_up, password_sign_up, self.users_auth_file, self.detadb)                    
                     send_welcome_email(name_sign_up, email_sign_up, self.auth_token, self.courier_welcome_template)
-                    st.success("Registration Successful!")
+                    st.success("Registration Successful! Please login to proceed.")
 
 
     def forgot_password(self) -> None:

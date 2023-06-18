@@ -358,7 +358,7 @@ def send_welcome_email(name, email, auth_token, template):
         },
     }
     )
-    print(resp['requestId'])
+    #print(resp['requestId'])
 
 def send_passwd_in_email(
         auth_token: str,
