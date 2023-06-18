@@ -28,7 +28,7 @@ setup(
         'extra_streamlit_components',
         'streamlit_option_menu',
         'trycourier',
-        'streamlit_cookies_manager',
+        'git+https://github.com/vidz1979/streamlit-cookies-manager.git',
         'argon2-cffi',
         'deta'
     ],
